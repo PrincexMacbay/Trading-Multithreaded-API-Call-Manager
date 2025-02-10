@@ -28,15 +28,16 @@ This is a research project to create a method to handle multiple API calls at on
 
 
 3. Create the orders table:
-`CREATE TABLE orders (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL,
-    symbol VARCHAR(10) NOT NULL,
-    side VARCHAR(4) NOT NULL,
-    price NUMERIC(10, 2) NOT NULL,
-    quantity NUMERIC(10, 2) NOT NULL,
-    status VARCHAR(10) NOT NULL
-); `
+   ```sql
+   CREATE TABLE orders (
+       id SERIAL PRIMARY KEY,
+       user_id INT NOT NULL,
+       symbol VARCHAR(10) NOT NULL,
+       side VARCHAR(4) NOT NULL,
+       price NUMERIC(10, 2) NOT NULL,
+       quantity NUMERIC(10, 2) NOT NULL,
+       status VARCHAR(10) NOT NULL
+   );
 
 
 # Redis
@@ -44,27 +45,31 @@ This is a research project to create a method to handle multiple API calls at on
 
 # Go Modules
 1. Initialize the Go module:
-   `go mod init <name of project folder>`
-2. Install the required dependencies
-   `go mod tidy`
+   ```go
+   go mod init <name of project folder>
+3. Install the required dependencies
+   ```go
+   go mod tidy
    
 # Running the Service
 1. Clone the repository or download the source code
 2. Navigate to the directory
 3. Run the Go application:
-   `go run main.go`
+   ```go
+   go run main.go
 # API Endpoints
 Create Order
 - URL: /api/order
 - Method: POST
 - Request Body:
-    `{
+  ```JSON
+    {
         "user_id": 1,
         "symbol": "AAPL",
         "side": "buy",
         "price": 150.00,
         "quantity": 10
-    }`
+    }
   
 - Response:
   - 202 Accepted: Order received
@@ -80,16 +85,17 @@ Using Postman
   - URL: https://localhost:3000/api/order
     <vscode_annotation details='%5B%7B%22title%22%3A%22hardcoded-  credentials%22%2C%22description%22%3A%22Embedding%20credentials%20in%20source%20code%20risks%20unauthorized%20access%22%7D%5D'> </vscode_annotation>
 
-  Body: Select `raw` and `JSON` format, then add the following JSON data:
-    `
-    {
-        "user_id": 1, 
-        "symbol": "AAPL",
-        "side": "buy",
-        "price": 150.00
-        "quantity": 10
-    }
-    `
+Body: Select `raw` and `JSON` format, then add the following JSON data:
+     ```JSON
+       
+       {
+           "user_id": 1, 
+           "symbol": "AAPL",
+           "side": "buy",
+           "price": 150.00
+           "quantity": 10
+       }
+    
 3. Use the Postman collection Runner to send multiple requests:
     - Click on the three small circle menu icon on the collection name that was created
     - Click on the "Run collection" to open the Collection Runner.
